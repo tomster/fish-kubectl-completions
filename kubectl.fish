@@ -222,6 +222,10 @@ function __fish_print_resource -d 'Print a list of resources' -a resource
   and return
 
   set -l namespace (__fish_kubectl_get_namespace)
+  if test -z "$namespace"
+    set namespace (update_kubectl_context)[2]
+  end
+
   test -z "$namespace"
   and __fish_kubectl get "$resource" -o name \
     | string replace -r '(.*)/' ''
