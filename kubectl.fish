@@ -223,7 +223,7 @@ function __fish_print_resource -d 'Print a list of resources' -a resource
 
   set -l namespace (__fish_kubectl_get_namespace)
   if test -z "$namespace"
-    set namespace (update_kubectl_context)[2]
+    set namespace (get_kubectl_context)[2]
   end
 
   test -z "$namespace"
